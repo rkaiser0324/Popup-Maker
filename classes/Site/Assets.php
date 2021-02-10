@@ -324,7 +324,9 @@ class PUM_Site_Assets {
 			wp_register_style( 'popup-maker-site', self::$cache_url . '/' . PUM_AssetCache::generate_cache_filename( 'pum-site-styles' ) . '.css?generated=' . $cached, array(), Popup_Maker::$VER );
 		} else {
 			wp_register_style( 'popup-maker-site', self::$css_url . 'pum-site' . ( is_rtl() ? '-rtl' : '' ) . self::$suffix . '.css', array(), Popup_Maker::$VER );
-			self::inline_styles();
+
+			// Bypass this and render the styles separately, to avoid performance problems
+			//self::inline_styles();
 		}
 	}
 
